@@ -11,7 +11,7 @@ Kudos to the projects
 
 I just adapted the send.cpp and usage message to allow the use with all types of switches (type A, B and Intertechno C).
 
-## Usage
+## Install
 
 First you have to install the [wiringpi](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/) library.
 For this, just execute the following commands:
@@ -27,8 +27,9 @@ git clone https://github.com/mar1u50/rcswitch-pi
 cd rcswitch-pi
 ```
 Open send.cpp and update the variable PIN.
-I'm using BCM GPIO pin 22 and in wiring pi this means PIN=3
+I'm using BCM GPIO pin 22 and in wiring pi this means PIN=3. For more information about the mapping between GPIO pins and wiringPi pins please see [wiringPi pins] (http://wiringpi.com/pins/).
 
-Compile the example program executing `make`.
+Compile the `send` program by running `make`.
 
+## Usage
 Run `sudo ./send` to print the usage.
