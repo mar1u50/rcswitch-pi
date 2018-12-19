@@ -2,6 +2,10 @@
 
 rcswitch-pi is for controlling rc remote controlled power sockets 
 with the *raspberry pi*. 
+
+![Compatibility](./transmitter_and_switch.png)
+
+
 It work with a 315/433MHz transmitter (e.g. https://www.robofun.ro/telecomanda-prize-434MHz-daisypi-raspberry-pi?search=radio) and an radio controlled outlet having a SC5262 / SC5272, HX2262 / HX2272, PT2262 / PT2272, EV1527, RT1527, FP1527 or HS1527 chipset. It also supports Intertechno outlets.
 
 Kudos to the projects 
