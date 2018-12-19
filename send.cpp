@@ -10,29 +10,31 @@
 
 void printUsage()
 {
-	std::cout << "  Usage for Type A with 10 pole DIP switches \n";
-	std::cout << "    Use: sudo ./send <groupCode> <nChannelCode> <command>\n";
+	std::cout << "Usage for Type A with 10 pole DIP switches \n";
+	std::cout << "    Syntax: sudo ./send <groupCode> <nChannelCode> <command>\n";
 	std::cout << "         sGroup        Code of the switch group (refers to DIP switches 1..5\n"; 
 	std::cout << "                       where '1' = on and '0' = off, if all DIP switches\n";
 	std::cout << "         nChannelCode  Number of the switch itself (1..4)\n";
+	std::cout << "         command       0 for OFF and 1 for ON\n";
 	std::cout << "    Example: sudo ./send 01011 3 1\n";
-	std::cout << "  \n";
-	std::cout << "  For Type B with two rotary/sliding switches \n";
-	std::cout << "    Use: sudo ./send <nAddressCode> <nChannelCode> <command>\n";
+	std::cout << "\n";
+	std::cout << "Usage for Type B with two rotary/sliding switches \n";
+	std::cout << "    Syntax: sudo ./send <nAddressCode> <nChannelCode> <command>\n";
 	std::cout << "         nAddressCode  Number of the switch group (1..4)\n";
 	std::cout << "         nChannelCode  Number of the switch itself (1..4)\n";
+	std::cout << "         command       0 for OFF and 1 for ON\n";
 	std::cout << "    Example: sudo ./send 2 3 1\n";
-	std::cout << "  \n";
-	std::cout << "  For Type C Intertechno \n";
-	std::cout << "    Use: sudo ./send <sFamily> <nGroup> <nDevice> <command>\n";
+	std::cout << "\n";
+	std::cout << "Usage for Type C Intertechno \n";
+	std::cout << "    Syntax: sudo ./send <sFamily> <nGroup> <nDevice> <command>\n";
 	std::cout << "         sFamily  Familycode (a..f)\n";
 	std::cout << "         nGroup   Number of group (1..4)\n";
 	std::cout << "         nDevice  Number of device (1..4)\n";
+	std::cout << "         command  0 for OFF and 1 for ON\n";
 	std::cout << "    Example: sudo ./send b 3 1 1\n";
-	std::cout << "  \n";
-	std::cout << "  Command is 0 for OFF and 1 for ON\n";
-	std::cout << "  \n";
-	std::cout << "  See http://code.google.com/p/rc-switch/wiki/HowTo_OperateLowCostOutlets for more information about supported switches\n";
+	std::cout << "\n";
+	std::cout << "\n";
+	std::cout << "See http://code.google.com/p/rc-switch/wiki/HowTo_OperateLowCostOutlets for more information about supported switches\n";
 }
 
 int main(int argc, char *argv[]) {
@@ -75,7 +77,7 @@ int main(int argc, char *argv[]) {
 		} else {
 			//Type B: Two rotary/sliding switches
 			int nGroupNumber = atoi(sGroup);
-			printf("sending [Type B] groupNumber[%i] switchNumber[%i] command[%i]\n", nGroupNumber, nSwitchNumber, command);
+			printf("sending [Type B] nAddressCode[%i] nChannelCode[%i] command[%i]\n", nGroupNumber, nSwitchNumber, command);
 			switch(command) {
 				case 1:
 					mySwitch.switchOn(nGroupNumber, nSwitchNumber);
@@ -100,7 +102,7 @@ int main(int argc, char *argv[]) {
 		
 		int command = atoi(argv[4]);
     
-		printf("sending [Type C] family[%s] groupNumber[%i] switchNumber[%i] command[%i]\n", sFamily, nGroup, nDevice, command);
+		printf("sending [Type C] sFamily[%s] nGroup[%i] nDevice[%i] command[%i]\n", sFamily, nGroup, nDevice, command);
 
 		switch(command) {
 			case 1:
