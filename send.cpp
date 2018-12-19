@@ -10,15 +10,28 @@
 
 void printUsage()
 {
-	std::cout << "  Usage: sudo ./send <groupCode> <switchNumber> <command>\n";
-	std::cout << "    e.g. sudo ./send 01011 3 1\n";
-	std::cout << "         sudo ./send <groupNumber> <switchNumber> <command>\n";
-	std::cout << "    e.g. sudo ./send 4 3 0\n";
-	std::cout << "         sudo ./send <familyCharacter> <groupNumber> <switchNumber> <command>\n";
-	std::cout << "    e.g. sudo ./send c 2 3 1\n";
-	std::cout << "\n";
+	std::cout << "  This utility has three possible usages: \n";
+	std::cout << "  For Type A with 10 pole DIP switches \n";
+	std::cout << "    Use: sudo ./send <groupCode> <nChannelCode> <command>\n";
+	std::cout << "         sGroup        Code of the switch group (refers to DIP switches 1..5 where '1' = on and '0' = off, if all DIP switches\n";
+	std::cout << "         nChannelCode  Number of the switch itself (1..4)\n";
+	std::cout << "    Example: sudo ./send 01011 3 1\n";
+	std::cout << "  \n";
+	std::cout << "  For Type B with two rotary/sliding switches \n";
+	std::cout << "    Use: sudo ./send <nAddressCode> <nChannelCode> <command>\n";
+	std::cout << "         nAddressCode  Number of the switch group (1..4)\n";
+	std::cout << "         nChannelCode  Number of the switch itself (1..4)\n";
+	std::cout << "    Example: sudo ./send 2 3 1\n";
+	std::cout << "  \n";
+	std::cout << "  For Type C Intertechno \n";
+	std::cout << "    Use: sudo ./send <sFamily> <nGroup> <nDevice> <command>\n";
+	std::cout << "         sFamily  Familycode (a..f)\n";
+	std::cout << "         nGroup   Number of group (1..4)\n";
+	std::cout << "         nDevice  Number of device (1..4)\n";
+	std::cout << "    Example: sudo ./send b 3 1 1\n";
+	std::cout << "  \n";
 	std::cout << "  Command is 0 for OFF and 1 for ON\n";
-	std::cout << "\n";
+	std::cout << "  \n";
 	std::cout << "  See http://code.google.com/p/rc-switch/wiki/HowTo_OperateLowCostOutlets for more information about supported switches\n";
 }
 
@@ -29,7 +42,7 @@ int main(int argc, char *argv[]) {
      see https://projects.drogon.net/raspberry-pi/wiringpi/pins/
      for pin mapping of the raspberry pi GPIO connector
      */
-    int PIN = 0;
+    int PIN = 3;
 	if (wiringPiSetup () == -1) return 1;
 	RCSwitch mySwitch = RCSwitch();
 	mySwitch.enableTransmit(PIN);
@@ -44,7 +57,7 @@ int main(int argc, char *argv[]) {
 		if(strlen(sGroup) > 2)
 		{
 			//Type A: 10 pole DIP switches
-			printf("sending [Type A] groupCode[%s] switchNumber[%i] command[%i]\n", sGroup, nSwitchNumber, command);
+			printf("sending [Type A] groupCode[%s] nChannelCode[%i] command[%i]\n", sGroup, nSwitchNumber, command);
 
 			switch(command) {
 				case 1:
