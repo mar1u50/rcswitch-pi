@@ -10,10 +10,10 @@
 
 void printUsage()
 {
-	std::cout << "  This utility has three possible usages: \n";
-	std::cout << "  For Type A with 10 pole DIP switches \n";
+	std::cout << "  Usage for Type A with 10 pole DIP switches \n";
 	std::cout << "    Use: sudo ./send <groupCode> <nChannelCode> <command>\n";
-	std::cout << "         sGroup        Code of the switch group (refers to DIP switches 1..5 where '1' = on and '0' = off, if all DIP switches\n";
+	std::cout << "         sGroup        Code of the switch group (refers to DIP switches 1..5\n"; 
+	std::cout << "                       where '1' = on and '0' = off, if all DIP switches\n";
 	std::cout << "         nChannelCode  Number of the switch itself (1..4)\n";
 	std::cout << "    Example: sudo ./send 01011 3 1\n";
 	std::cout << "  \n";
