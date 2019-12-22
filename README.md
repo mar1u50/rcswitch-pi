@@ -37,3 +37,20 @@ Compile the `send` program by running `make`.
 
 ## Usage
 Run `sudo ./send` to print the usage.
+
+## Scheduling
+We can program raspberry pi to switch on / off the power socket at certain hours.
+To do that, edit `/etc/crontab`.
+Inside the file you can add
+```
+01 16	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 1 1 2>&1
+02 16	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 2 1 2>&1
+03 16	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 1 1 2>&1
+04 16	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 2 1 2>&1
+
+01 0	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 1 0 2>&1
+02 0	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 2 0 2>&1
+03 0	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 1 0 2>&1
+04 0	* * *	root	/home/pi/wiringpi/rcswitch-pi/send b 1 2 0 2>&1
+```
+Note: I switch the lights on or off twice just to be sure the message has been received by the swich.
