@@ -20,6 +20,7 @@ First you have to install the [wiringpi](https://projects.drogon.net/raspberry-p
 For this, just execute the following commands:
 ```
 git clone git://git.drogon.net/wiringPi
+(if the above fails, use git clone https://github.com/wiringpi/wiringpi)
 cd wiringPi
 git pull origin
 ./build
